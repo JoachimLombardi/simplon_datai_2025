@@ -1,4 +1,3 @@
-
 0. installer numpy / veille sur la documentation de numpy
 1. Créez un tableau NumPy contenant les entiers de 1 à 10 (inclus).
 1. Créez un tableau NumPy contenant 5 valeurs flottantes générées aléatoirement entre 0 et 1.
