@@ -1,0 +1,59 @@
+DATA,COLONNES,TYPE,TAILLE,,MCD part 1,COLONNES,TYPE,TAILLE,,MLD,COLONNES,KEY,TARGET,,MPD,COLONNES,TYPE,TAILLE,KEY,TARGET
+Commande,,,,,Commande,,,,,Commande,id,PRIMARY,,,Commande,id,int,12,PRIMARY,
+,ID_Client,entier,5,,,,,,,,ID_Client,FOREIGN,Client(ID),,,ID_Client,int,5,FOREIGN,Client(ID)
+,Nom_Client,chaîne de crct,10,,,,,,,,,,,,,,,,,
+,Prenom_Client,chaîne de crct,10,,,,,,,,,,,,,,,,,
+,Adresse_Client,chaîne de crct,30,,,,,,,,,,,,,,,,,
+,Ville_Client,chaîne de crct,10,,,,,,,,,,,,,,,,,
+,Pays_Client,chaîne de crct,10,,,,,,,,,,,,,,,,,
+,Email_Client,chaîne de crct,30,,,,,,,,,,,,,,,,,
+,ID_Commande,entier,5,,,ID_Commande,entier,5,,,ID_Commande,,,,,ID_Commande,int,5,,
+,Date_Commande,date,YYYY-MM-DD,,,Date_Commande,date,YYYY-MM-DD,,,Date_Commande,,,,,Date_Commande,DATE,YYYY-MM-JJ,,
+,Montant_Commande,décimal,5,,,Montant_Commande,décimal,5,,,Montant_Commande,,,,,Montant_Commande,FLOAT,5,,
+,ID_Produit,entier,5,,,,,,,,,,,,,,,,,
+,Nom_Produit,chaîne de crct,10,,,,,,,,,,,,,,,,,
+,Categorie_Produit,chaîne de crct,15,,,,,,,,,,,,,,,,,
+,Adresse_Magasin,chaîne de crct,30,,,,,,,,Adresse_ID,FOREIGN,Adresse(ID),,,Adresse_ID,int,30,FOREIGN,Adresse(ID)
+,,,,,,,,,,,,,,,,,,,,
+,,,,,Client,COLONNES,TYPE,TAILLE,,Client,COLONNES,KEY,TARGET,,Client,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,,PRIMARY,
+,,,,,,email,chaîne de crct,30,,,email,,,,,email,VARCHAR,30,,
+,,,,,,nom,chaîne de crct,10,,,nom,,,,,nom,VARCHAR,10,,
+,,,,,,prenom,chaîne de crct,10,,,prenom,,,,,prenom,VARCHAR,10,,
+,,,,,,,,,,,adresse_id,FOREIGN,Adresse(ID),,,adresse_id,INT,5,FOREIGN,Adresse(ID)
+,,,,,,,,,,,,,,,,,,,,
+,,,,,Adresse,COLONNES,TYPE,TAILLE,,Adresse,COLONNES,KEY,TARGET,,Adresse,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,12,PRIMARY,
+,,,,,,adresse,chaîne de crct,30,,,adresse,,,,,adresse,VARCHAR,30,,
+,,,,,,,,,,,ville_id,FOREIGN,ville(id),,,ville_id,INT,5,FOREIGN,ville(ID)
+,,,,,,,,,,,,,,,,,,,,
+,,,,,Ville,COLONNES,TYPE,TAILLE,,Ville,COLONNES,KEY,TARGET,,Ville,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,5,PRIMARY,
+,,,,,,ville,chaîne de crct,20,,,nom,,,,,nom,VARCHAR,10,,
+,,,,,,,,,,,pays_id,FOREIGN,pays(id),,,pays_id,INT,10,FOREIGN,pays(id)
+,,,,,,,,,,,,,,,,,,,,
+,,,,,Pays,COLONNES,TYPE,TAILLE,,Pays,COLONNES,KEY,TARGET,,Pays,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,5,PRIMARY,
+,,,,,,pays,chaîne de crct,10,,,nom,,,,,nom,VARCHAR,10,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,Categorie,COLONNES,TYPE,TAILLE,,Categorie,COLONNES,KEY,TARGET,,Categorie,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,5,PRIMARY,
+,,,,,,nom,chaîne de crct,15,,,category,,,,,category,VARCHAR,15,,
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,Produit,COLONNES,KEY,TARGET,,Produit,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,Produit,COLONNES,TYPE,TAILLE,,,id,PRIMARY,,,,id,int,5,PRIMARY,
+,,,,,,,,,,,nom,,,,,nom,VARCHAR,10,,
+,,,,,,nom,chaîne de crct,10,,,categorie_id,FOREIGN,categorie(id),,,categorie_id,INT,5,FOREIGN,categorie(id)
+,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,Commande_Produit,COLONNES,KEY,TARGET,,Commande_Produit,COLONNES,TYPE,TAILLE,KEY,TARGET
+,,,,,,,,,,,id,PRIMARY,,,,id,int,5,PRIMARY,
+,,,,,,,,,,,Commandes_id,FOREIGN,Commandes(id),,,Commandes_id,INT,10,FOREIGN,Commandes(ID)
+,,,,,,,,,,,Id_Produit,FOREIGN,Produit(id),,,Id_Produit,INT,5,FOREIGN,Produit(ID)
+,,,,Relation,,,,,,,,,,,,,,,,
+,,,,Commande,"1,1",CORRESPOND,"1,n",Client,,,,,,,,,,,,
+,,,,Commande,"1,n",CORRESPOND,"1,n",Categorie,,,,,,,,,,,,
+,,,,Commande,"1,n",CORRESPOND,"1,n",Adresse,,,,,,,,,,,,
+,,,,Adresse,"1,1",CORRESPOND,"1,n",Ville,,,,,,,,,,,,
+,,,,Ville,"1,1",CORRESPOND,"1,n",Pays,,,,,,,,,,,,
+,,,,Categorie,"1,n",CORRESPOND,"1,1",Produit,,,,,,,,,,,,
+,,,,Client,"1,1",,"1,n",Adresse,,,,,,,,,,,,
