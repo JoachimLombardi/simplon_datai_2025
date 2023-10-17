@@ -41,7 +41,7 @@ class Club_de_sport():
         return f"La salle de sport comporte {self.nombre_de_salle} salles, un bloc sanitaire de type {self.bloc_sanitaire}, les équipements sont des {self.type_equipements} et le type de climatisation est {self.climatisation}"
     
 class Salle_de_musculation(Club_de_sport):
-    def __init__(self, nombre_de_salle, bloc_sanitaire, type_equipements="haltères et des tapis de courses", climatisation="air conditionnée") -> None:
+    def __init__(self, nombre_de_salle, bloc_sanitaire, type_equipements="haltères et des tapis de courses", climatisation="air") -> None:
         super().__init__(nombre_de_salle, bloc_sanitaire, type_equipements, climatisation)
     def __str__(self) -> str:
         return super().__str__()
