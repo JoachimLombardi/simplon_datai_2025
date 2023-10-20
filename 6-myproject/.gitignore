@@ -1,5 +1,10 @@
+.ipynb_checkpoints/
+plan.md
+_brief.md
+venv/
 .pytest_cache
 components/__pychache__
+.venv
 ML/GradientBoostingClassifier.joblib
 ML/LGBMClassifier.joblib
 ML/LogisticRegression.joblib
@@ -8,3 +13,4 @@ ML/preprocessor.joblib
 ML/SVC.joblib
 ML/XGBClassifier.joblib
 test/__pychache__
+C:\Users\User\Desktop\Simplon datai\simplon_datai_2025\6-myproject/.venv

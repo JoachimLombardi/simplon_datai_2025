@@ -1,11 +1,10 @@
-from components.mymodule import Club_de_sport, Salle_de_musculation
-from tests.test import Test_Mymodule
+from components.mymodule import Salle_de_musculation
+from components.create_model import test_model, X_train, X_test, y_train, y_test, models, param_grid_model
+ 
 sm = Salle_de_musculation(nombre_de_salle=3, bloc_sanitaire="douches")
 print(sm)
-test = Test_Mymodule()
-test.test_salle_de_musculation()
 
-
+test_model(X_train, X_test, y_train, y_test, models, param_grid_model)
 
 
 

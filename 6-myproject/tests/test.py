@@ -1,3 +1,4 @@
+import pytest
 # Try to import the module "mymodule"
 try:
     from ..components import mymodule

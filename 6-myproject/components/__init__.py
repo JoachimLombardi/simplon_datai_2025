@@ -1,0 +1,1 @@
+# Permet de considérer le répertoire "components" comme un package.
