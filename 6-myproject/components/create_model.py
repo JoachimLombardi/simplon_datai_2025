@@ -13,8 +13,13 @@ from sklearn.compose import make_column_selector
 from sklearn.compose import make_column_transformer
 from sklearn.impute import SimpleImputer
 import joblib
-from components.titanic import X, y
+from components.titanic import X, y, stat_survive
 from sklearn.model_selection import train_test_split
+from components.figure import figure
+
+# Affichage de figure
+figure(stat_survive, categorie="Sex")
+
 
 # Creation de pipeline
 

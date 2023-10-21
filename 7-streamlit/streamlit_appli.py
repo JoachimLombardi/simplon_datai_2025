@@ -1,9 +1,10 @@
 import streamlit as st
 import numpy as np
 from matplotlib import pyplot as plt
-import sounddevice as sd
+# import sounddevice as sd
 import seaborn as sns
 import pandas as pd
+from pymongo import MongoClient
 
 st.title("Tableau de Bord Simple")
 st.write("Je m'appelle Joachim, et voici ma première application Streamlit.")
@@ -23,29 +24,29 @@ freq = st.slider("Fréquence",0, 100, 1)
 y = np.sin(2 * np.pi * freq * t)
 st.line_chart(y)
 
-def sinusoids(a,f,Fs,T,phase):
+# def sinusoids(a,f,Fs,T,phase):
 
-    t = np.arange(0,Fs*T) # pour une seconde
-    s = 0 
-    for i,freq in enumerate(f):
+#     t = np.arange(0,Fs*T) # pour une seconde
+#     s = 0 
+#     for i,freq in enumerate(f):
 
-        s += a[i] * np.sin(2*np.pi*freq*t/Fs + 2*np.pi/360*phase[i])
-    return s
+#         s += a[i] * np.sin(2*np.pi*freq*t/Fs + 2*np.pi/360*phase[i])
+#     return s
 
-N = 1
-a = np.random.rand(N)
-f = np.random.rand(N)*256
-phase = np.random.randn(N)*360
-Fs = 44100 
-T = 2
+# N = 1
+# a = np.random.rand(N)
+# f = np.random.rand(N)*256
+# phase = np.random.randn(N)*360
+# Fs = 44100 
+# T = 2
 
-a[0] = 1
-f[0] = 440
+# a[0] = 1
+# f[0] = 440
 
-x = sinusoids(a,f,Fs,T,phase)
+# x = sinusoids(a,f,Fs,T,phase)
 
-x = x/np.abs(x).max() 
-sd.play(x,Fs)
+# x = x/np.abs(x).max() 
+# sd.play(x,Fs)
 
 button_html = """
 <style>
@@ -67,9 +68,7 @@ nombre = [1, 2, 3]
 
 # Créer le graphique
 fig, ax = plt.subplots()
-ax.bar(x, y)
-ax.set_xticks(x)
-ax.set_xticklabels(nombre)
+
 
 tab1, tab2, tab3 = st.tabs(["Graphique à Barres", "Graphique circulaire", "Graphique à Arcs"])
 
@@ -110,11 +109,23 @@ st.sidebar.title("Lecture et Affichage de Données depuis Différents Fichiers")
 choice = st.sidebar.selectbox("Fichier", ["Fichier CSV", "Fichier Excel", "Fichier JSON"])
 if choice == "Fichier CSV":
     st.write("Lecture de données depuis un fichier CSV")
+    placeholder = st.empty()
     student_grades = st.file_uploader("student_grades.csv") 
     if student_grades is not None:
         df = pd.read_csv(student_grades)
-        st.dataframe(df)
+        placeholder.dataframe(df)
 elif choice == "Fichier Excel":
     st.write("Lecture de données depuis un fichier Excel")
 elif choice == "Fichier JSON":
     st.write("Lecture de données depuis un fichier JSON")
+
+st.title("Connexion à une Base de Données NoSQL (MongoDB)")
+client = MongoClient("mongodb://localhost:27017/")
+db = client["ma_base_de_données"]
+collection = db["utilisateurs"]
+nom_utilisateur = st.text_input("Ajoutez un utilisateur avec un nom")
+email_utilisateur = st.text_input("Ajoutez un utilisateur un email")
+if st.button("Ajouter"):
+    utilisateur = {"nom": nom_utilisateur, "email": email_utilisateur}
+    collection.insert_one(utilisateur)
+    st.success("L'utilisateur a bien été ajouté")

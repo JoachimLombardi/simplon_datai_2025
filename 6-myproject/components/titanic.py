@@ -37,13 +37,13 @@ def stat_survive(categorie = "Age", sexe = None):
         for i in range(10, 81, 10):
             stat_survive[f"Personne entre {i -10} et {i} ans"] = age_survived[(age_survived.index <= i) & (age_survived.index > i - 10)]["survived"].sum() / (age_survived[(age_survived.index <= i) & (age_survived.index > i - 10)]['survived'].sum() + age_survived[(age_survived.index <= i) & (age_survived.index > i - 10)]['non_survived'].sum())
     else:
-        survived = pd.crosstab(df_titanic.categorie, df_titanic.Survived)
+        survived = pd.crosstab(getattr(df_titanic, categorie), df_titanic.Survived)
         survived.columns = ["non_survived", "survived"]
         stat_survive = {}
-        if categorie == "age":
+        if categorie == "Age":
             for i in range(10, 81, 10):
                 stat_survive[f"Personne entre {i -10} et {i} ans"] = survived[(survived.index <= i) & (survived.index > i - 10)]["survived"].sum() / (survived[(survived.index <= i) & (survived.index > i - 10)]['survived'].sum() + survived[(survived.index <= i) & (survived.index > i - 10)]['non_survived'].sum())
-        elif categorie == "sexe":
+        elif categorie == "Sex":
             for i in range(0, 2):
                 stat_survive[survived.index[i]] = survived[survived.index == survived.index[i]]["survived"].sum() / (survived[survived.index == survived.index[i]]["survived"].sum() + survived[survived.index == survived.index[i]]['non_survived'].sum())
         elif categorie == "Pclass":
