@@ -21,7 +21,7 @@ class Customers(Base):
 class Orders(Base):
     __tablename__ = 'orders'
     id = Column(Integer, primary_key=True)
-    customer_id = Column(Integer, ForeignKey('customers.id', ondelete='CASCADE'))
-    customer = relationship(Customers, backref='orders', cascade='all, delete-orphan', single_parent=True)
-    product_id = Column(Integer, ForeignKey('products.id', ondelete='CASCADE'))
-    product = relationship(Products, backref='orders', cascade='all, delete-orphan', single_parent=True)
+    customer_id = Column(Integer, ForeignKey('customers.id')) #ondelete='CASCADE' permet de supprimer la ligne où que soit réalisée la supression
+    customer = relationship(Customers)#, backref='orders', cascade='all, delete-orphan', single_parent=True)
+    product_id = Column(Integer, ForeignKey('products.id')) #ondelete='CASCADE'
+    product = relationship(Products)#, backref='orders', cascade='all, delete-orphan', single_parent=True)

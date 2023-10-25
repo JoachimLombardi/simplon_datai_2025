@@ -1,4 +1,3 @@
-
 import requests
 import streamlit as st
 from pathlib import Path
@@ -7,6 +6,8 @@ import pandas as pd
 
 # URL du serveur Flask
 server_url = 'http://localhost:5000'  # Assurez-vous de mettre l'URL correcte
+
+# url = localhost:port/app.route
 
 # Fonction pour récupérer des données depuis le serveur Flask
 def get_server_data():

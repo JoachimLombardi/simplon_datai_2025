@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from os.path import join
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, joinedload
+from sqlalchemy.orm import sessionmaker
 from models.model import Products, Customers, Orders, Base
 from sqlalchemy_utils import database_exists, create_database, drop_database
 import config
@@ -134,7 +134,7 @@ session.close()
 Session = sessionmaker(bind=engine)
 session = Session()
 
-order_2 = session.query(Orders).options(joinedload(Orders.product), joinedload(Orders.customer)).filter(Orders.id == 2).first()
+order_2 = session.query(Orders).filter(Orders.id == 2).first()
     
 # Supprimer l'ordre 2
 

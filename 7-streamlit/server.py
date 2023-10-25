@@ -5,12 +5,12 @@ import pandas as pd
 
 app = Flask(__name__)
 
-@app.route('/api/data', methods=['GET'])
+@app.route('/api/data', methods=['GET']) # Pour index pas besoin de définir une route "/"
 
 def get_data():
-    bikes_data_path = Path() / 'api/data/student_grades.csv'
-    data = pd.read_csv(bikes_data_path)
-    return json.dumps(data.to_json())
+    data_path = Path() / 'api/data/student_grades.csv'
+    data = pd.read_csv(data_path)
+    return json.dumps(data.to_json()), 200
 
 def index():
     # Créez une connexion au serveur MySQL
@@ -39,4 +39,4 @@ def index():
                            utilisateurs=utilisateurs)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True) #Default 5000
