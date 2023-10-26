@@ -2,5 +2,5 @@
 DATABASE_HOST = "localhost"
 DATABASE_NAME = "students_base"
 DATABASE_USERNAME = "root"
-DATABASE_PASSWORD = "jojo"
+DATABASE_PASSWORD = "root"
 DATABASE_PORT = "3309"
