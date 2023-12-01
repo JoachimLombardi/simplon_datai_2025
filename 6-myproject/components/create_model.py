@@ -63,22 +63,6 @@ param_grid_model = {
     Perceptron : {'max_iter' : [100, 200, 500, 1000],
     'eta0' : [0.5, 1, 1.5]}
 }
-param_grid_model = { 
-    GradientBoostingClassifier : {'n_estimators': [100, 200, 500],
-    'learning_rate': [0.01, 0.1, 0.005],
-    'max_depth': [3, 5, 8]},
-    lgb.LGBMClassifier : {'n_estimators': [100, 200, 500],
-    'learning_rate': [0.01, 0.1, 0.005],
-    'max_depth': [3, 5, 8]},
-    xgb.XGBClassifier : { 'n_estimators': [100, 200, 500],
-    'learning_rate': [0.01, 0.1, 0.005],
-    'max_depth': [3, 5, 8]},
-    LogisticRegression : {'max_iter' : [50, 100 , 200 , 500],
-    'solver' : ['lbfgs', 'liblinear', 'newton-cg', 'newton-cholesky', 'sag', 'saga']},
-    SVC : {'kernel' : ['linear', 'poly','rbf', 'sigmoid']},
-    Perceptron : {'max_iter' : [100, 200, 500, 1000],
-    'eta0' : [0.5, 1, 1.5]}
-}
 models = {"GradientBoostingClassifier" : GradientBoostingClassifier,
           "LGBMClassifier" : lgb.LGBMClassifier,
           "XGBClassifier" : xgb.XGBClassifier,
