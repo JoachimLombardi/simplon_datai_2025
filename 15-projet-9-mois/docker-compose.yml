@@ -1,0 +1,7 @@
+services:
+  meilisync:
+    platform: linux/x86_64
+    image: long2ice/meilisync
+    volumes:
+      - ./config.yml:/meilisync/config.yml
+
