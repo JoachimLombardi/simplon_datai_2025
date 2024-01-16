@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recherche avec MeiliSearch</title>
+</head>
+<body>
+    <input type="text" id="searchBox" placeholder="Recherche...">
+    <button onclick="search()">Rechercher</button>
+    <div id="results"></div>
+
+    <script>
+        function search() {
+            const searchTerm = document.getElementById('searchBox').value;
+
+            const indexes = ['articles', 'recipes', 'food', 'questions'];
+            /*
+            fetch('http://127.0.0.1:7700/indexes/articles/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    // Ajoutez votre clé API ici si nécessaire
+                    'Authorization': 'Bearer ec16a4b27a9e5bad7640a83c58c8bb161dc902bcdb940fc230508c6b9542295e'
+                },
+                body: JSON.stringify({ q: searchTerm })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                displayResults(data);
+            })
+            .catch(error => console.error('Erreur:', error));
+            */
+
+            Promise.all(indexes.map(index => 
+                fetch(`http://127.0.0.1:7700/indexes/${index}/search`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer api-key'
+                    },
+                    body: JSON.stringify({ q: searchTerm })
+                }).then(response => response.json())
+            )).then(results => {
+                
+                // Combiner les résultats de tous les index
+                const combinedResults = results.flatMap(result => result.hits);
+                displayResults(combinedResults);
+            }).catch(error => console.error('Erreur:', error));
+        }
+
+        function displayResults(results) {
+            const resultsElement = document.getElementById('results');
+            resultsElement.innerHTML = ''; // Effacer les résultats précédents
+
+            results.forEach(hit => {
+                const div = document.createElement('div');
+                div.textContent = hit.id+' - '+hit.title+' - '+hit.name; // Remplacez 'title' par le champ pertinent de vos documents
+                resultsElement.appendChild(div);
+            });
+        }
+
+    </script>
+</body>
+</html>

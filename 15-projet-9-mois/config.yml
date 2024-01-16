@@ -5,16 +5,16 @@ progress:
   type: file
 meilisearch:
   api_url: http://localhost:7700/
-  api_key: '30a37e21566dde9d7706878a68260ed2357e5f3453fa07e4590fec89ca4d534a'
+  api_key: '6776a1d681ce852a7c71aa10d673809574e4914aac29ceb69012276e51adcc05'
   insert_size: 1000
   insert_interval: 10
 source:
   type: mysql
-  host: 192.168.5.46 # assuming your MySQL server is running on the same machine as `meilisync`
+  host: 192.168.1.23 # assuming your MySQL server is running on the same machine as `meilisync`
   port: 3306
   database: 9mois
-  user: root
-  password: "root"
+  user: jojo
+  password: "jojo"
 
 sync:
   - table: food
