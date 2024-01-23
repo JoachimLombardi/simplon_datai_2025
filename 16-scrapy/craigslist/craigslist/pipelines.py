@@ -32,5 +32,9 @@ class MongoPipeline:
     def process_item(self, item, spider):
         if not self.db["quotes"].find_one({"quote": item["quote"], "author": item["author"]}):
             self.db[self.collection_name].insert_one(ItemAdapter(item).asdict())
+        # On test si l'index existe, sinon on le crée
+        if not self.db["quotes"].create_index([("quote", "text"), ("author", "text")]):
+            # Indexer la collection
+            self.db[self.collection_name].create_index([("quote", "text"), ("author", "text")])
         return item
         
