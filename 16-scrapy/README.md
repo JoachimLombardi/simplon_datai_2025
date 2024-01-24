@@ -11,9 +11,12 @@ Display the result with Streamlit.
 
 ### Make it works
 
-* Clone the repository
+* Clone the repository.
 * Install the required librairies: *pip install -r requirements.txt*
-* Go to the second craiglist directories
+* Launch the docker desktop.
+* Create a docker with: *docker pull mongo:5.0*
+* Instantiate the docker on port 27017: *docker run --scrapy_db -p 27017:27017 -d mongo*
+* Go to the second craiglist directories.
 * Launch the Flask server: *flask --app server.py run*
 * Launch the streamlit app: *streamlit run streamlit_client.py*
 
