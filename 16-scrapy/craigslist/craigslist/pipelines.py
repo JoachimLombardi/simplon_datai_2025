@@ -6,7 +6,7 @@
 
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
-import pymongo
+import pymongo, json
 
 
 class MongoPipeline:
@@ -32,6 +32,14 @@ class MongoPipeline:
     def process_item(self, item, spider):
         if not self.db["quotes"].find_one({"quote": item["quote"], "author": item["author"]}):
             self.db[self.collection_name].insert_one(ItemAdapter(item).asdict())
+            # Create a JSON object with the scraped data
+            # scraped_data = {
+            #     "quote": item["quote"],
+            #     "author": item["author"],
+            # }
+            # json_data = json.dumps(scraped_data)
+            # with open("scraped_data.json", "a") as f:
+            #     f.write(json_data + "\n")
         # On test si l'index existe, sinon on le crée
         if not self.db["quotes"].create_index([("quote", "text"), ("author", "text")]):
             # Indexer la collection

@@ -1,10 +1,7 @@
-import streamlit as st
-from pymongo import MongoClient
-import requests, json
+# https://python.gotrained.com/scrapy-tutorial-web-scraping-craigslist/
 
-client = MongoClient("mongodb://localhost:27017/")
-db = client.gpt_db
-collection = db.quotes
+import streamlit as st
+import requests, json
 
 serveur_url = "http://localhost:5000"
 
@@ -12,6 +9,7 @@ def get_server_data():
     response = requests.get(f"{serveur_url}/search", params={"query": query})  
     if response.status_code == 200:
         data = response.json()
+        print(data)
         return data
     else:
         print("Error: ", response.status_code)

@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 client = MongoClient("mongodb://localhost:27017/")
-db = client.gpt_db
+db = client.scrapy_db
 collection = db.quotes
 
 # Rechercher par index

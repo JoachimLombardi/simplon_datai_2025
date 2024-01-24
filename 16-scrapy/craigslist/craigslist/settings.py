@@ -13,7 +13,7 @@ SPIDER_MODULES = ["craigslist.spiders"]
 NEWSPIDER_MODULE = "craigslist.spiders"
 
 MONGO_URI = "mongodb://localhost:27017"
-MONGO_DATABASE = "gpt_db"
+MONGO_DATABASE = "scrapy_db"
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = "craigslist (+http://www.yourdomain.com)"
