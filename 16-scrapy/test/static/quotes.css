@@ -1,0 +1,12 @@
+p {
+    font-size:16px;
+    font-family:arial;
+}
+.author {
+    font-size:14px;
+    font-weight:bold;
+}
+body {
+    background-color:green;
+    margin:30px;
+}
