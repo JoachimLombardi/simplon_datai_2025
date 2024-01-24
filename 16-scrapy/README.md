@@ -14,8 +14,8 @@ Display the result with Streamlit.
 * Clone the repository
 * Install the required librairies: [install librairies](pip install -r requirements.txt)
 * Go to the second craiglist directories
-* Launch the Flask server: flask --app server.py run
-* Launch the streamlit app: streamlit run streamlit_client.py
+* Launch the Flask server: *flask --app server.py run*
+* Launch the streamlit app: *streamlit run streamlit_client.py*
 
 ## Remote
 
