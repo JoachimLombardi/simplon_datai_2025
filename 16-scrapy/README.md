@@ -12,7 +12,7 @@ Display the result with Streamlit.
 ### Make it works
 
 * Clone the repository
-* Install the required librairies: [install librairies](pip install -r requirements.txt)
+* Install the required librairies: *pip install -r requirements.txt*
 * Go to the second craiglist directories
 * Launch the Flask server: *flask --app server.py run*
 * Launch the streamlit app: *streamlit run streamlit_client.py*
