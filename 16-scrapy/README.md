@@ -17,7 +17,7 @@ Display the result with Streamlit.
 * Launch the docker desktop.
 * Create a docker with: *docker pull mongo:5.0*
 * Instantiate the docker on port 27017: *docker run --scrapy_db -p 27017:27017 -d mongo*
-* Fullfill MongoDb with scrapy : *scrapy crawl jobs*
+* Fullfill scrapy_db with scrapy : *scrapy crawl jobs*
 * Launch the Flask server: *flask --app server.py run*
 * Launch the streamlit app: *streamlit run streamlit_client.py*
 
